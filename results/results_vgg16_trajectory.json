@@ -1,0 +1,2016 @@
+{
+  "experiment": "vgg16_spectral_trajectory",
+  "dataset": "Tiny-ImageNet-200",
+  "model": "VGG-16 (modified classifier)",
+  "top_k": 100,
+  "total_epochs": 25,
+  "elapsed_hours": 0.7783397469917933,
+  "trajectory": [
+    {
+      "epoch": 0,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 2,
+        "power_law": 2,
+        "lognormal": 11
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.1509361391389334,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": -20.414535073941224,
+            "exponential": -59.048588276159435,
+            "lognormal": -51.31482740357679
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.1165354337223008,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -254.619458560369,
+            "exponential": -106.8789118045033,
+            "lognormal": -250.69088791958458
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.9754418694166125,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -366.28458520312455,
+            "exponential": -158.85009085582627,
+            "lognormal": -374.3206799998957
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.8730921502351063,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -312.1153906106006,
+            "exponential": -150.53382619410783,
+            "lognormal": -341.91397407671974
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.9069306839484162,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -322.41913165579194,
+            "exponential": -127.64836095669513,
+            "lognormal": -415.3117444288014
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.9243607114668293,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -317.1708434500137,
+            "exponential": -121.12461645568992,
+            "lognormal": -423.0579015709445
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.9524220696550756,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -324.6021076772934,
+            "exponential": -117.47766380008937,
+            "lognormal": -425.32464675025864
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.116411689873799,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -316.9098382167215,
+            "exponential": -88.0811390365293,
+            "lognormal": -443.3179731067849
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.1831611319540376,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -365.40374812077147,
+            "exponential": -91.69834388111322,
+            "lognormal": -451.21437919212497
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.2184342533725545,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -396.0734683773133,
+            "exponential": -98.78232819122161,
+            "lognormal": -429.7788850709723
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.4562410945705588,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -280.8949157244006,
+            "exponential": -39.48496119105282,
+            "lognormal": -339.54158475462435
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.5401123112317014,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -251.44859428600464,
+            "exponential": -28.157394421602657,
+            "lognormal": -279.4274536558116
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.5608256957743758,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -244.63554278877618,
+            "exponential": -28.13820576084429,
+            "lognormal": -261.8613478289957
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 4.724434281761058,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 220.4565907841671,
+            "exponential": 102.0898645519672,
+            "lognormal": 157.27058999754755
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 3.8526593178983366,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": 104.26119489266475,
+            "exponential": 110.66536647164268,
+            "lognormal": 104.76496239101726
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 1,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 1,
+        "power_law": 2,
+        "lognormal": 12
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 3.0069527012274397,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": -5.156398948728135,
+            "exponential": -22.667444771663913,
+            "lognormal": -21.33433534775733
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.7909199656568522,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -164.32251914307912,
+            "exponential": -41.649949451736035,
+            "lognormal": -160.33564842472896
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.7600228123065522,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -250.08428208138693,
+            "exponential": -3.1472172838470165,
+            "lognormal": -457.3247645230537
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.6822720830101974,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -235.0089752314467,
+            "exponential": -6.052667430088537,
+            "lognormal": -424.71213384440625
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.7695474266551947,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -289.0053917501341,
+            "exponential": -10.720525008705607,
+            "lognormal": -402.6716570524049
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.6855357287733055,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -329.4180660892202,
+            "exponential": -28.248621558990568,
+            "lognormal": -411.309027791355
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.6461492847724644,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -398.21626729180974,
+            "exponential": -42.41981095404017,
+            "lognormal": -454.73316520979836
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.5505585505892874,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -446.94372864794195,
+            "exponential": -62.92429322998784,
+            "lognormal": -457.2253001020668
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.4325529807317272,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -522.2273008248795,
+            "exponential": -85.94941121763308,
+            "lognormal": -524.535168938482
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.3833430208191289,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -564.5552515253604,
+            "exponential": -94.74247104405937,
+            "lognormal": -569.1293570752216
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.526345550224644,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -396.0190242714891,
+            "exponential": -56.043164654107656,
+            "lognormal": -438.3359588029935
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.5386617777259621,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -381.8611404395655,
+            "exponential": -54.60334935791903,
+            "lognormal": -417.04609484612683
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.5368369399331538,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -420.9092145481224,
+            "exponential": -64.17260577696214,
+            "lognormal": -431.10176434257124
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 5.90216616557474,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": 135.67133211431522,
+            "exponential": 32.51365661592194,
+            "lognormal": -6.434553982569261
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 5.037541099248233,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -93.18970722044897,
+            "exponential": 148.05752647791005,
+            "lognormal": -88.5848602220984
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 3,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 3,
+        "lognormal": 12
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.9672999225281242,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 8.477249939892525,
+            "exponential": -64.2669079439823,
+            "lognormal": -38.367006132046036
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.7119462563191887,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -157.453690319533,
+            "exponential": -99.56509843721206,
+            "lognormal": -258.9437665939418
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.6407761491364001,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -437.3327597534726,
+            "exponential": -83.16844497624274,
+            "lognormal": -485.84327387976913
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.6070490634881784,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -500.86353249497864,
+            "exponential": -88.1288331236522,
+            "lognormal": -587.9491655952673
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.5797894963814252,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -465.3484434394242,
+            "exponential": -94.5768832875862,
+            "lognormal": -584.1223265195157
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.5058465530890186,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -386.3431423910005,
+            "exponential": -119.89616169095642,
+            "lognormal": -583.179059144999
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.351577209374511,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -383.8312256798748,
+            "exponential": -146.5710465328485,
+            "lognormal": -587.7146790259355
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.2726846476615723,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -461.02855594610753,
+            "exponential": -141.03990349787577,
+            "lognormal": -576.7114060405619
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.2184971713013193,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -445.0149706274995,
+            "exponential": -149.7581901519017,
+            "lognormal": -543.3165316688953
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.1135816505309846,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -458.28838943789,
+            "exponential": -177.27363278814204,
+            "lognormal": -627.5839765234425
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.261524581917518,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -535.396249159104,
+            "exponential": -121.63260859015246,
+            "lognormal": -539.3007066704279
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.3434416197983734,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -457.12052978717355,
+            "exponential": -119.71601285852832,
+            "lognormal": -500.15934213905683
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.3090140676293953,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -479.16385036465084,
+            "exponential": -133.71718573870157,
+            "lognormal": -573.175168599722
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 5.646025447765056,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 285.2906968153602,
+            "exponential": 184.5491895480815,
+            "lognormal": 225.86129341313563
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.434096690076632,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 250.73464502501983,
+            "exponential": 108.53085778294692,
+            "lognormal": 171.56136513423206
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 5,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 3,
+        "lognormal": 12
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.8177214442252803,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 0.6387464319457061,
+            "exponential": -55.30230052611054,
+            "lognormal": -32.94658968933029
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.5336060088567418,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -158.6422598530511,
+            "exponential": -118.39811211446371,
+            "lognormal": -233.8979559153025
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.4152221430871743,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -356.4227392595978,
+            "exponential": -151.86515728085467,
+            "lognormal": -493.06278231403326
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.2960151865629195,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -455.59823676222817,
+            "exponential": -147.75318073044437,
+            "lognormal": -586.1805473773921
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.2611764885843775,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -427.7504089041602,
+            "exponential": -159.78638824545672,
+            "lognormal": -645.3863120045883
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.2053985772208375,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -421.04320371904276,
+            "exponential": -174.38112470106427,
+            "lognormal": -661.2653700052571
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 1.110144840149189,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -468.96981661883524,
+            "exponential": -179.3742240298519,
+            "lognormal": -567.5945245356146
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.0600909458307592,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -514.6630436901102,
+            "exponential": -182.26646558807667,
+            "lognormal": -610.7884669251561
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 1.0363311526117494,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -545.8328346810076,
+            "exponential": -183.23718865125056,
+            "lognormal": -621.9229191311019
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.9472951727526855,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -567.7442543680764,
+            "exponential": -195.83947468522518,
+            "lognormal": -603.5407984883382
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.1043034396439342,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -701.4220044123259,
+            "exponential": -154.4000901462106,
+            "lognormal": -732.5300886777952
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.2191166613969684,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -568.240268546064,
+            "exponential": -140.24176162221087,
+            "lognormal": -639.4402542411439
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.2228078301963567,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -475.1376543410764,
+            "exponential": -149.90843313662873,
+            "lognormal": -549.1989037842388
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 5.657909697390591,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 298.27178328221805,
+            "exponential": 201.0311218009261,
+            "lognormal": 238.83552362053783
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.560158408280075,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 284.90446109284915,
+            "exponential": 150.19596710278356,
+            "lognormal": 208.53288465157576
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 10,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 3,
+        "lognormal": 8,
+        "power_law": 4
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.7568088396408448,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 0.24973289650492436,
+            "exponential": -59.248850801154745,
+            "lognormal": -38.35192455090581
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.4685341703121664,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -151.26006004073756,
+            "exponential": -118.78355163661615,
+            "lognormal": -198.03812856383297
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.2532411265524788,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -383.70261421013697,
+            "exponential": -175.5806006013591,
+            "lognormal": -496.5443383026575
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.0118556371531937,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -502.32797157628835,
+            "exponential": -191.59244863156337,
+            "lognormal": -537.5082100347846
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.9759244008253198,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -550.8603770921864,
+            "exponential": -195.57041348929258,
+            "lognormal": -598.4734488308712
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.9190430627013283,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -548.4664062816671,
+            "exponential": -204.46633743171103,
+            "lognormal": -568.6815848013938
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.8269513125018327,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -551.5526757795296,
+            "exponential": -214.85762856688797,
+            "lognormal": -548.102598757626
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.794417398968053,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -539.6498907828966,
+            "exponential": -211.46253600822692,
+            "lognormal": -540.3726204034906
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.7702902305053033,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -568.3513855570033,
+            "exponential": -220.8624946722492,
+            "lognormal": -566.4238912721878
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.7122650937123504,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -559.8171183594529,
+            "exponential": -233.71616667844984,
+            "lognormal": -558.7696338588179
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.8310865191807884,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -515.017438039445,
+            "exponential": -205.89910926474622,
+            "lognormal": -513.792241026657
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.0294715614152443,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -514.6604929325438,
+            "exponential": -180.4422885445689,
+            "lognormal": -531.3876383096061
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.1029601131051125,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -519.1392538363741,
+            "exponential": -164.50874438584398,
+            "lognormal": -539.2399446711469
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.018061693698547,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 259.1664000951785,
+            "exponential": 115.6101563657039,
+            "lognormal": 154.3706130460592
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 7.297622611388026,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 280.27729919756143,
+            "exponential": 107.67226765779377,
+            "lognormal": 160.23187433295374
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 15,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 3,
+        "lognormal": 10,
+        "power_law": 2
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.7073478216582614,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": -4.989966137777731,
+            "exponential": -59.2508155616742,
+            "lognormal": -46.293693901260056
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.4019251551199994,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -178.98003043199694,
+            "exponential": -120.84471615794791,
+            "lognormal": -238.98469163244334
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 1.181962814508305,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -379.1391502350704,
+            "exponential": -185.54440723040744,
+            "lognormal": -452.89957188186486
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.9630577314464368,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -500.33830530860035,
+            "exponential": -201.4894855492817,
+            "lognormal": -529.2573542947682
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.901618507116086,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -577.7262218609599,
+            "exponential": -201.99214557483268,
+            "lognormal": -581.2178093764034
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.8579510330859453,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -577.9157800960643,
+            "exponential": -212.8809913533984,
+            "lognormal": -580.7232172118869
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.781236412169534,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -611.6271000925104,
+            "exponential": -220.6145666200239,
+            "lognormal": -607.547792504657
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.7475828366980605,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -539.8495936868928,
+            "exponential": -213.0428224465471,
+            "lognormal": -570.6198771283784
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.7271110914561673,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -573.2017735774964,
+            "exponential": -220.7493554440602,
+            "lognormal": -603.891626504788
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.682150804330295,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -568.49674618851,
+            "exponential": -235.8935957199707,
+            "lognormal": -583.4737634847163
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.7575430039478049,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -513.2853831129696,
+            "exponential": -212.26385515028,
+            "lognormal": -532.6078698484205
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.9436000951788196,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -550.4452129073906,
+            "exponential": -184.79408406383544,
+            "lognormal": -545.8462397356841
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 1.0585167874338117,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -476.0031819284467,
+            "exponential": -168.26102554873043,
+            "lognormal": -479.13280039221917
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 5.678780471443703,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 293.2328929502398,
+            "exponential": 176.04582735068544,
+            "lognormal": 216.99630546681863
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.919978598429107,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": 319.63288845829146,
+            "exponential": 190.50563232384576,
+            "lognormal": 238.55170711844715
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 20,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 1,
+        "lognormal": 8,
+        "power_law": 6
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.3957262409376674,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": -5.880108597449574,
+            "exponential": -85.89217037037315,
+            "lognormal": -57.225197617440465
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.0885069489299062,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -140.45168057130854,
+            "exponential": -155.9019099694309,
+            "lognormal": -172.9087569689102
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.8566828383165287,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -392.93974592105167,
+            "exponential": -275.0852937943472,
+            "lognormal": -513.504740136937
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.679124435084331,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -556.4935512687271,
+            "exponential": -268.23151452688904,
+            "lognormal": -565.3565483047421
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.7059387980323941,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -537.4480973083481,
+            "exponential": -246.1860948363604,
+            "lognormal": -532.9090827319644
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.6863431768418033,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -606.4822450534278,
+            "exponential": -256.0444439758083,
+            "lognormal": -605.1174069517177
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.6393679099484353,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -578.4592239422042,
+            "exponential": -271.15329840939484,
+            "lognormal": -575.9816585685327
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.6563552806942577,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -561.218172702185,
+            "exponential": -257.75853608305613,
+            "lognormal": -556.8008186092643
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.6370940440732522,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -603.5300394620517,
+            "exponential": -263.9290958389132,
+            "lognormal": -599.1670416350145
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.5922588910305148,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -607.0873117436583,
+            "exponential": -281.68647346693126,
+            "lognormal": -602.6610957696698
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.7379223690140001,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -524.486559158746,
+            "exponential": -267.7010680642061,
+            "lognormal": -588.7834747947584
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.8366161148179132,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -482.64573633337494,
+            "exponential": -250.50642087220845,
+            "lognormal": -584.7285827778906
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.9057181077517671,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -425.06468439560393,
+            "exponential": -243.02490777201416,
+            "lognormal": -515.808981544212
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.402719655132829,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": 176.0654226737476,
+            "exponential": 156.75222352692558,
+            "lognormal": 72.58858525588815
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 7.459510604541062,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": 189.45263582586904,
+            "exponential": 204.1764512496228,
+            "lognormal": 110.71006236910344
+          }
+        }
+      ]
+    },
+    {
+      "epoch": 25,
+      "n_layers": 15,
+      "wins_by_bic": {
+        "exponential": 1,
+        "lognormal": 10,
+        "power_law": 4
+      },
+      "layers": [
+        {
+          "name": "features.0.weight",
+          "shape": [
+            64,
+            27
+          ],
+          "top_k": 27,
+          "depth_group": 0,
+          "gamma": 2.4339637710960336,
+          "best_model_bic": "exponential",
+          "bic": {
+            "power_law": -3.385563485027424,
+            "exponential": -76.15149644715876,
+            "lognormal": -46.40684116511979
+          }
+        },
+        {
+          "name": "features.2.weight",
+          "shape": [
+            64,
+            576
+          ],
+          "top_k": 64,
+          "depth_group": 0,
+          "gamma": 1.1774656707309605,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -192.82864798506054,
+            "exponential": -139.0036770762968,
+            "lognormal": -233.46702438028598
+          }
+        },
+        {
+          "name": "features.5.weight",
+          "shape": [
+            128,
+            576
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.9212477151206562,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -446.5114908562253,
+            "exponential": -233.13253797601877,
+            "lognormal": -525.9696608887747
+          }
+        },
+        {
+          "name": "features.7.weight",
+          "shape": [
+            128,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 1,
+          "gamma": 0.7468634970718732,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -539.4326306861291,
+            "exponential": -241.67561867239985,
+            "lognormal": -538.8903629064339
+          }
+        },
+        {
+          "name": "features.10.weight",
+          "shape": [
+            256,
+            1152
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.706931817288976,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -558.5266931616605,
+            "exponential": -254.1135504289326,
+            "lognormal": -560.3414551866058
+          }
+        },
+        {
+          "name": "features.12.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.673779729497941,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -604.1389630960385,
+            "exponential": -260.5021239578039,
+            "lognormal": -607.3342227348186
+          }
+        },
+        {
+          "name": "features.14.weight",
+          "shape": [
+            256,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 2,
+          "gamma": 0.604730998643519,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -589.213570993609,
+            "exponential": -278.74226602804526,
+            "lognormal": -586.37365358095
+          }
+        },
+        {
+          "name": "features.17.weight",
+          "shape": [
+            512,
+            2304
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.6453669420416476,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -598.0539661081714,
+            "exponential": -257.8328352537943,
+            "lognormal": -596.8969412729576
+          }
+        },
+        {
+          "name": "features.19.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.6360914989080558,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -645.1336941102951,
+            "exponential": -259.9973231810998,
+            "lognormal": -645.4048201060399
+          }
+        },
+        {
+          "name": "features.21.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 3,
+          "gamma": 0.6008130509740025,
+          "best_model_bic": "power_law",
+          "bic": {
+            "power_law": -587.7369858984762,
+            "exponential": -275.1255338603823,
+            "lognormal": -583.7452369701882
+          }
+        },
+        {
+          "name": "features.24.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.7729187407848678,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -549.1102488948663,
+            "exponential": -251.54994805503836,
+            "lognormal": -607.2940164826834
+          }
+        },
+        {
+          "name": "features.26.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.8864461484646127,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -525.1295857701969,
+            "exponential": -220.527884826801,
+            "lognormal": -568.8042082629978
+          }
+        },
+        {
+          "name": "features.28.weight",
+          "shape": [
+            512,
+            4608
+          ],
+          "top_k": 100,
+          "depth_group": 4,
+          "gamma": 0.9579336046814543,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": -481.8564650730694,
+            "exponential": -208.60424550397417,
+            "lognormal": -522.0074948373118
+          }
+        },
+        {
+          "name": "classifier.0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 6.348887392843079,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": 170.86191998644918,
+            "exponential": 142.96679525984044,
+            "lognormal": 54.52642989585641
+          }
+        },
+        {
+          "name": "classifier.3.weight",
+          "shape": [
+            200,
+            256
+          ],
+          "top_k": 100,
+          "depth_group": 5,
+          "gamma": 7.623172252427485,
+          "best_model_bic": "lognormal",
+          "bic": {
+            "power_law": 195.11758842243756,
+            "exponential": 183.27525758619757,
+            "lognormal": 86.49634983339413
+          }
+        }
+      ]
+    }
+  ]
+}

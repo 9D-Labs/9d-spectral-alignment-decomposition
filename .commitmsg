@@ -1,0 +1,6 @@
+Initial release: reproducibility package for Spectral Alignment Decomposition
+
+Paper source, frozen experimental results (15 JSON files), automated claim
+verification (27 checks), figure generation scripts, and measurement protocol.
+
+All claims verifiable from bundled data without GPU.

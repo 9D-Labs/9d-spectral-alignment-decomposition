@@ -1,0 +1,47 @@
+{
+  "n_layers": 5,
+  "corr_alpha_gap_vs_kronecker_slack": 0.48005216832841663,
+  "corr_alpha_gap_vs_r2_h_sigma": 0.26720232944428846,
+  "layers": [
+    {
+      "name": "conv1",
+      "alpha": 1.9860202237385984,
+      "alpha_gap": 0.013979776261401566,
+      "conc_ratio": 0.8746006190776825,
+      "kronecker_slack": 0.1253993809223175,
+      "r2_exact": 0.9727508463957562
+    },
+    {
+      "name": "layer1.0.conv2",
+      "alpha": 2.5180212272161158,
+      "alpha_gap": 0.5180212272161158,
+      "conc_ratio": 0.8198058307170868,
+      "kronecker_slack": 0.1801941692829132,
+      "r2_exact": 0.9698514832694598
+    },
+    {
+      "name": "layer2.0.conv1",
+      "alpha": 2.568769996825855,
+      "alpha_gap": 0.5687699968258548,
+      "conc_ratio": 0.9908610880374908,
+      "kronecker_slack": 0.009138911962509155,
+      "r2_exact": 0.9887634614413681
+    },
+    {
+      "name": "layer3.0.conv1",
+      "alpha": 2.9689877426941202,
+      "alpha_gap": 0.9689877426941202,
+      "conc_ratio": 1.592963457107544,
+      "kronecker_slack": 0.592963457107544,
+      "r2_exact": 0.9510038144552532
+    },
+    {
+      "name": "layer4.0.conv2",
+      "alpha": 2.2267139890607432,
+      "alpha_gap": 0.22671398906074325,
+      "conc_ratio": 0.59355229139328,
+      "kronecker_slack": 0.40644770860671997,
+      "r2_exact": 0.8098517307562962
+    }
+  ]
+}

@@ -1,0 +1,1330 @@
+{
+  "phase1a": {
+    "n_layers": 24,
+    "wins_by_bic": {
+      "power_law": 1,
+      "exponential": 2,
+      "lognormal": 21
+    },
+    "wins_pct": {
+      "power_law": 4.166666666666667,
+      "exponential": 8.333333333333334,
+      "lognormal": 87.5
+    },
+    "wins_by_layer_type": {
+      "conv": {
+        "power_law": 1,
+        "exponential": 0,
+        "lognormal": 13,
+        "total": 14
+      },
+      "fc": {
+        "power_law": 0,
+        "exponential": 2,
+        "lognormal": 2,
+        "total": 4
+      },
+      "mlp": {
+        "power_law": 0,
+        "exponential": 0,
+        "lognormal": 6,
+        "total": 6
+      }
+    },
+    "interpretation": "BIC < 0 for alternative vs power-law means alternative preferred. delta_bic exp_minus_pl < -2 suggests strong preference for exponential."
+  },
+  "rmt": {
+    "n_init": 54,
+    "n_trained": 54,
+    "corr_backprop_depth_vs_gamma_init": {
+      "r": -0.2658969455029172,
+      "p": 0.05197304245231879,
+      "n": 54
+    },
+    "corr_backprop_depth_vs_gamma_trained": {
+      "r": -0.014896676788884733,
+      "p": 0.9148586130320223,
+      "n": 54
+    },
+    "mean_gamma_by_backprop_depth_trained": {
+      "0": {
+        "mean": 7.640615275056192,
+        "n": 1
+      },
+      "1": {
+        "mean": 1.325863565964364,
+        "n": 10
+      },
+      "2": {
+        "mean": 0.8289091366869028,
+        "n": 19
+      },
+      "3": {
+        "mean": 1.102309940932622,
+        "n": 13
+      },
+      "4": {
+        "mean": 1.9571770405039435,
+        "n": 10
+      },
+      "5": {
+        "mean": 2.121791662674783,
+        "n": 1
+      }
+    },
+    "rows": [
+      {
+        "phase": "init",
+        "name": "conv1.weight",
+        "stage": 0,
+        "backprop_depth": 5,
+        "gamma": 1.5065551046599481,
+        "best_model_bic": "lognormal",
+        "beta": 0.07234097879129066,
+        "best_top100": "power_law",
+        "delta_bic": 18.240571396170964
+      },
+      {
+        "phase": "init",
+        "name": "layer1.0.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 2.301672409904896,
+        "best_model_bic": "exponential",
+        "beta": 0.12454914816307056,
+        "best_top100": "exponential",
+        "delta_bic": -9.171389902319788
+      },
+      {
+        "phase": "init",
+        "name": "layer1.0.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.4505566212014687,
+        "best_model_bic": "power_law",
+        "beta": 0.06616796967995109,
+        "best_top100": "power_law",
+        "delta_bic": 64.53248092689488
+      },
+      {
+        "phase": "init",
+        "name": "layer1.0.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.5278709922936653,
+        "best_model_bic": "power_law",
+        "beta": 0.07200718796876282,
+        "best_top100": "power_law",
+        "delta_bic": 28.315773139811014
+      },
+      {
+        "phase": "init",
+        "name": "layer1.0.downsample.0.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.3042816734393627,
+        "best_model_bic": "lognormal",
+        "beta": 0.05411070892603625,
+        "best_top100": "power_law",
+        "delta_bic": 141.91761801169147
+      },
+      {
+        "phase": "init",
+        "name": "layer1.1.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.620867548807117,
+        "best_model_bic": "exponential",
+        "beta": 0.08118643366572627,
+        "best_top100": "exponential",
+        "delta_bic": -0.45886586346550473
+      },
+      {
+        "phase": "init",
+        "name": "layer1.1.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.4956505581979114,
+        "best_model_bic": "lognormal",
+        "beta": 0.07212005414535665,
+        "best_top100": "power_law",
+        "delta_bic": 6.9307122102878935
+      },
+      {
+        "phase": "init",
+        "name": "layer1.1.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.6260909427897816,
+        "best_model_bic": "exponential",
+        "beta": 0.08100440056097502,
+        "best_top100": "exponential",
+        "delta_bic": -17.990966686430745
+      },
+      {
+        "phase": "init",
+        "name": "layer1.2.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.490867249962998,
+        "best_model_bic": "power_law",
+        "beta": 0.07323157951555408,
+        "best_top100": "power_law",
+        "delta_bic": 24.287194766000184
+      },
+      {
+        "phase": "init",
+        "name": "layer1.2.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.3975863690987107,
+        "best_model_bic": "power_law",
+        "beta": 0.06514823814897212,
+        "best_top100": "power_law",
+        "delta_bic": 31.1937134913587
+      },
+      {
+        "phase": "init",
+        "name": "layer1.2.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.489682219746685,
+        "best_model_bic": "lognormal",
+        "beta": 0.07224599135409525,
+        "best_top100": "power_law",
+        "delta_bic": 1.2721451554697722
+      },
+      {
+        "phase": "init",
+        "name": "layer2.0.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.3163574129917013,
+        "best_model_bic": "power_law",
+        "beta": 0.039858682377197,
+        "best_top100": "power_law",
+        "delta_bic": 102.45712334604471
+      },
+      {
+        "phase": "init",
+        "name": "layer2.0.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1117619165444614,
+        "best_model_bic": "lognormal",
+        "beta": 0.03126212699357564,
+        "best_top100": "power_law",
+        "delta_bic": 180.76264359985117
+      },
+      {
+        "phase": "init",
+        "name": "layer2.0.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1917099679823875,
+        "best_model_bic": "power_law",
+        "beta": 0.035036307364825534,
+        "best_top100": "power_law",
+        "delta_bic": 138.24860106001154
+      },
+      {
+        "phase": "init",
+        "name": "layer2.0.downsample.0.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1145293321752134,
+        "best_model_bic": "lognormal",
+        "beta": 0.031003955193411436,
+        "best_top100": "power_law",
+        "delta_bic": 192.54589810235132
+      },
+      {
+        "phase": "init",
+        "name": "layer2.1.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.3246679830689294,
+        "best_model_bic": "power_law",
+        "beta": 0.04047767108947526,
+        "best_top100": "power_law",
+        "delta_bic": 74.4941550361161
+      },
+      {
+        "phase": "init",
+        "name": "layer2.1.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.195491570171709,
+        "best_model_bic": "lognormal",
+        "beta": 0.03376766828934944,
+        "best_top100": "power_law",
+        "delta_bic": 208.14517024887525
+      },
+      {
+        "phase": "init",
+        "name": "layer2.1.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.2463589520980651,
+        "best_model_bic": "power_law",
+        "beta": 0.03631607891894392,
+        "best_top100": "power_law",
+        "delta_bic": 183.72915370151946
+      },
+      {
+        "phase": "init",
+        "name": "layer2.2.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.3390334212775874,
+        "best_model_bic": "power_law",
+        "beta": 0.041066079148330395,
+        "best_top100": "power_law",
+        "delta_bic": 67.31688703952753
+      },
+      {
+        "phase": "init",
+        "name": "layer2.2.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.2406117443736513,
+        "best_model_bic": "power_law",
+        "beta": 0.03590612474584234,
+        "best_top100": "power_law",
+        "delta_bic": 191.52534408525707
+      },
+      {
+        "phase": "init",
+        "name": "layer2.2.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.2712454757299674,
+        "best_model_bic": "power_law",
+        "beta": 0.0375501724055637,
+        "best_top100": "power_law",
+        "delta_bic": 166.59103670474747
+      },
+      {
+        "phase": "init",
+        "name": "layer2.3.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.4030217525228392,
+        "best_model_bic": "lognormal",
+        "beta": 0.043505886179059074,
+        "best_top100": "power_law",
+        "delta_bic": 52.65573026717803
+      },
+      {
+        "phase": "init",
+        "name": "layer2.3.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.238779495360628,
+        "best_model_bic": "lognormal",
+        "beta": 0.0352892675158675,
+        "best_top100": "power_law",
+        "delta_bic": 254.13407168793805
+      },
+      {
+        "phase": "init",
+        "name": "layer2.3.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.2576950222849606,
+        "best_model_bic": "power_law",
+        "beta": 0.03659320707215221,
+        "best_top100": "power_law",
+        "delta_bic": 241.7608017902511
+      },
+      {
+        "phase": "init",
+        "name": "layer3.0.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.1313141806708558,
+        "best_model_bic": "lognormal",
+        "beta": 0.03180331261489505,
+        "best_top100": "power_law",
+        "delta_bic": 270.407445873248
+      },
+      {
+        "phase": "init",
+        "name": "layer3.0.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.1751865077765034,
+        "best_model_bic": "lognormal",
+        "beta": 0.03106074042380459,
+        "best_top100": "power_law",
+        "delta_bic": 240.9421175672275
+      },
+      {
+        "phase": "init",
+        "name": "layer3.0.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.2135725183568682,
+        "best_model_bic": "lognormal",
+        "beta": 0.032346389317254046,
+        "best_top100": "power_law",
+        "delta_bic": 253.19179128474235
+      },
+      {
+        "phase": "init",
+        "name": "layer3.0.downsample.0.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.1688684222235843,
+        "best_model_bic": "lognormal",
+        "beta": 0.031269212388066674,
+        "best_top100": "power_law",
+        "delta_bic": 240.99627436378682
+      },
+      {
+        "phase": "init",
+        "name": "layer3.1.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.1753783733498606,
+        "best_model_bic": "lognormal",
+        "beta": 0.0314080158478541,
+        "best_top100": "power_law",
+        "delta_bic": 246.71067911817732
+      },
+      {
+        "phase": "init",
+        "name": "layer3.1.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.3151659655629078,
+        "best_model_bic": "lognormal",
+        "beta": 0.03473766830446425,
+        "best_top100": "power_law",
+        "delta_bic": 228.5046635884638
+      },
+      {
+        "phase": "init",
+        "name": "layer3.1.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.369081891494898,
+        "best_model_bic": "lognormal",
+        "beta": 0.03682248387588805,
+        "best_top100": "power_law",
+        "delta_bic": 243.23562281271322
+      },
+      {
+        "phase": "init",
+        "name": "layer3.2.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.3477754297086983,
+        "best_model_bic": "lognormal",
+        "beta": 0.036234767874804556,
+        "best_top100": "power_law",
+        "delta_bic": 251.94428877818157
+      },
+      {
+        "phase": "init",
+        "name": "layer3.2.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.435179950280441,
+        "best_model_bic": "lognormal",
+        "beta": 0.03836334453750176,
+        "best_top100": "power_law",
+        "delta_bic": 227.06085784509543
+      },
+      {
+        "phase": "init",
+        "name": "layer3.2.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.4804212493772273,
+        "best_model_bic": "lognormal",
+        "beta": 0.039987936871056874,
+        "best_top100": "power_law",
+        "delta_bic": 222.66784503330766
+      },
+      {
+        "phase": "init",
+        "name": "layer3.3.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.4353452905442161,
+        "best_model_bic": "lognormal",
+        "beta": 0.03877036980381512,
+        "best_top100": "power_law",
+        "delta_bic": 228.2603103049803
+      },
+      {
+        "phase": "init",
+        "name": "layer3.3.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.5053374108251376,
+        "best_model_bic": "lognormal",
+        "beta": 0.0405983881752217,
+        "best_top100": "power_law",
+        "delta_bic": 216.88002155482022
+      },
+      {
+        "phase": "init",
+        "name": "layer3.3.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.5646518494516075,
+        "best_model_bic": "lognormal",
+        "beta": 0.04251314422837485,
+        "best_top100": "power_law",
+        "delta_bic": 213.10065658516288
+      },
+      {
+        "phase": "init",
+        "name": "layer3.4.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.5256239908914826,
+        "best_model_bic": "lognormal",
+        "beta": 0.041369944002763455,
+        "best_top100": "power_law",
+        "delta_bic": 212.69132021977808
+      },
+      {
+        "phase": "init",
+        "name": "layer3.4.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.606874658982241,
+        "best_model_bic": "lognormal",
+        "beta": 0.04329497625860357,
+        "best_top100": "power_law",
+        "delta_bic": 203.6585682164023
+      },
+      {
+        "phase": "init",
+        "name": "layer3.4.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.6672699580865464,
+        "best_model_bic": "lognormal",
+        "beta": 0.04545093558068469,
+        "best_top100": "power_law",
+        "delta_bic": 200.25461298205025
+      },
+      {
+        "phase": "init",
+        "name": "layer3.5.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.6413518829647928,
+        "best_model_bic": "lognormal",
+        "beta": 0.04468162296721689,
+        "best_top100": "power_law",
+        "delta_bic": 202.8152813945786
+      },
+      {
+        "phase": "init",
+        "name": "layer3.5.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.6903892126749673,
+        "best_model_bic": "lognormal",
+        "beta": 0.04561363278816014,
+        "best_top100": "power_law",
+        "delta_bic": 220.22411928978113
+      },
+      {
+        "phase": "init",
+        "name": "layer3.5.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.7227501942530836,
+        "best_model_bic": "lognormal",
+        "beta": 0.04693587610279445,
+        "best_top100": "power_law",
+        "delta_bic": 215.08702014688856
+      },
+      {
+        "phase": "init",
+        "name": "layer4.0.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.7066273525113131,
+        "best_model_bic": "lognormal",
+        "beta": 0.0466902741143657,
+        "best_top100": "power_law",
+        "delta_bic": 193.15168008265147
+      },
+      {
+        "phase": "init",
+        "name": "layer4.0.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.3719891587946178,
+        "best_model_bic": "lognormal",
+        "beta": 0.03318908698954808,
+        "best_top100": "power_law",
+        "delta_bic": 130.60151249429407
+      },
+      {
+        "phase": "init",
+        "name": "layer4.0.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.396524101997226,
+        "best_model_bic": "lognormal",
+        "beta": 0.033904598251758705,
+        "best_top100": "power_law",
+        "delta_bic": 133.0201506891007
+      },
+      {
+        "phase": "init",
+        "name": "layer4.0.downsample.0.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.3688290102332763,
+        "best_model_bic": "lognormal",
+        "beta": 0.033266507058112973,
+        "best_top100": "power_law",
+        "delta_bic": 135.90425272793925
+      },
+      {
+        "phase": "init",
+        "name": "layer4.1.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.3749913307313462,
+        "best_model_bic": "lognormal",
+        "beta": 0.033743860652535,
+        "best_top100": "power_law",
+        "delta_bic": 138.66600799524366
+      },
+      {
+        "phase": "init",
+        "name": "layer4.1.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4450320072529568,
+        "best_model_bic": "lognormal",
+        "beta": 0.03479713953333205,
+        "best_top100": "power_law",
+        "delta_bic": 126.59045276394994
+      },
+      {
+        "phase": "init",
+        "name": "layer4.1.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4720399169636116,
+        "best_model_bic": "lognormal",
+        "beta": 0.035222096686844756,
+        "best_top100": "power_law",
+        "delta_bic": 126.44514870810941
+      },
+      {
+        "phase": "init",
+        "name": "layer4.2.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4602155258490366,
+        "best_model_bic": "lognormal",
+        "beta": 0.03535964088260304,
+        "best_top100": "power_law",
+        "delta_bic": 131.48845109200198
+      },
+      {
+        "phase": "init",
+        "name": "layer4.2.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.533021975770795,
+        "best_model_bic": "lognormal",
+        "beta": 0.036739403099012774,
+        "best_top100": "power_law",
+        "delta_bic": 125.10127131534837
+      },
+      {
+        "phase": "init",
+        "name": "layer4.2.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.5574155745129104,
+        "best_model_bic": "lognormal",
+        "beta": 0.0372624302022533,
+        "best_top100": "power_law",
+        "delta_bic": 127.53404106684602
+      },
+      {
+        "phase": "init",
+        "name": "fc.weight",
+        "stage": 5,
+        "backprop_depth": 0,
+        "gamma": 5.10564678345786,
+        "best_model_bic": "lognormal",
+        "beta": 0.13926654854539455,
+        "best_top100": "power_law",
+        "delta_bic": 276.7818056942843
+      },
+      {
+        "phase": "trained",
+        "name": "conv1.weight",
+        "stage": 0,
+        "backprop_depth": 5,
+        "gamma": 2.121791662674783,
+        "best_model_bic": "exponential",
+        "beta": 0.13724447208036186,
+        "best_top100": "exponential",
+        "delta_bic": -54.35341078045994
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.0.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 5.968141059478072,
+        "best_model_bic": "exponential",
+        "beta": 0.4500154667611709,
+        "best_top100": "exponential",
+        "delta_bic": -32.608350669207084
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.0.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.504511372369607,
+        "best_model_bic": "lognormal",
+        "beta": 0.08491692324366444,
+        "best_top100": "power_law",
+        "delta_bic": 32.76353732925094
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.0.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.6030974940925053,
+        "best_model_bic": "lognormal",
+        "beta": 0.09318950812850928,
+        "best_top100": "exponential",
+        "delta_bic": -9.814055442436995
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.0.downsample.0.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 2.033390898321335,
+        "best_model_bic": "exponential",
+        "beta": 0.1236940360255356,
+        "best_top100": "exponential",
+        "delta_bic": -41.198029085711426
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.1.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.4340461167434924,
+        "best_model_bic": "lognormal",
+        "beta": 0.08779205361652823,
+        "best_top100": "power_law",
+        "delta_bic": 24.992918989638582
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.1.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.387765049573486,
+        "best_model_bic": "lognormal",
+        "beta": 0.06997126967388764,
+        "best_top100": "exponential",
+        "delta_bic": -8.408993640172724
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.1.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.6743285648127622,
+        "best_model_bic": "exponential",
+        "beta": 0.08831922220044286,
+        "best_top100": "exponential",
+        "delta_bic": -65.66994657346376
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.2.conv1.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.337600280610923,
+        "best_model_bic": "lognormal",
+        "beta": 0.07013839495151561,
+        "best_top100": "exponential",
+        "delta_bic": -46.92786161460215
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.2.conv2.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.170739242864593,
+        "best_model_bic": "exponential",
+        "beta": 0.0585115605674936,
+        "best_top100": "exponential",
+        "delta_bic": -43.39422150513818
+      },
+      {
+        "phase": "trained",
+        "name": "layer1.2.conv3.weight",
+        "stage": 1,
+        "backprop_depth": 4,
+        "gamma": 1.4581503261726603,
+        "best_model_bic": "exponential",
+        "beta": 0.07583523627161874,
+        "best_top100": "exponential",
+        "delta_bic": -81.6432042196771
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.0.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.3360671342671413,
+        "best_model_bic": "lognormal",
+        "beta": 0.04122446851878086,
+        "best_top100": "power_law",
+        "delta_bic": 130.81875851837714
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.0.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 0.9378827526462657,
+        "best_model_bic": "lognormal",
+        "beta": 0.02872003721324994,
+        "best_top100": "power_law",
+        "delta_bic": 156.34575178285564
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.0.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.068568185145199,
+        "best_model_bic": "lognormal",
+        "beta": 0.03332358933470014,
+        "best_top100": "power_law",
+        "delta_bic": 86.22359741702718
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.0.downsample.0.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1875923758492613,
+        "best_model_bic": "lognormal",
+        "beta": 0.035214050556737986,
+        "best_top100": "power_law",
+        "delta_bic": 303.97823548588303
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.1.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1849401847877656,
+        "best_model_bic": "lognormal",
+        "beta": 0.03639055399069892,
+        "best_top100": "power_law",
+        "delta_bic": 150.20526760728004
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.1.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.136067955745397,
+        "best_model_bic": "lognormal",
+        "beta": 0.034541076135532534,
+        "best_top100": "power_law",
+        "delta_bic": 182.27617126894725
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.1.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.2825630822259353,
+        "best_model_bic": "lognormal",
+        "beta": 0.039795220988193124,
+        "best_top100": "power_law",
+        "delta_bic": 106.62665911503771
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.2.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.116437630187687,
+        "best_model_bic": "lognormal",
+        "beta": 0.03464417886934922,
+        "best_top100": "power_law",
+        "delta_bic": 109.67615927346796
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.2.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.0318800773015482,
+        "best_model_bic": "lognormal",
+        "beta": 0.03143437335977002,
+        "best_top100": "power_law",
+        "delta_bic": 175.91212612026973
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.2.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.1410861653093918,
+        "best_model_bic": "lognormal",
+        "beta": 0.03562802401715249,
+        "best_top100": "power_law",
+        "delta_bic": 84.08672597443413
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.3.conv1.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 1.0778855277502315,
+        "best_model_bic": "lognormal",
+        "beta": 0.033391739365332886,
+        "best_top100": "power_law",
+        "delta_bic": 106.65748350295627
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.3.conv2.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 0.8432310988770915,
+        "best_model_bic": "lognormal",
+        "beta": 0.025652708036432093,
+        "best_top100": "power_law",
+        "delta_bic": 147.08033712037192
+      },
+      {
+        "phase": "trained",
+        "name": "layer2.3.conv3.weight",
+        "stage": 2,
+        "backprop_depth": 3,
+        "gamma": 0.9858270620311695,
+        "best_model_bic": "lognormal",
+        "beta": 0.030620769901499353,
+        "best_top100": "power_law",
+        "delta_bic": 91.87504359348367
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.0.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 1.0111587837760505,
+        "best_model_bic": "lognormal",
+        "beta": 0.03035569919486396,
+        "best_top100": "power_law",
+        "delta_bic": 221.24685422826275
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.0.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8125827311572078,
+        "best_model_bic": "lognormal",
+        "beta": 0.024773059040501113,
+        "best_top100": "power_law",
+        "delta_bic": 155.03247813850862
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.0.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.9008022978796446,
+        "best_model_bic": "lognormal",
+        "beta": 0.027432122565231337,
+        "best_top100": "power_law",
+        "delta_bic": 151.66836370458694
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.0.downsample.0.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8678043425010872,
+        "best_model_bic": "lognormal",
+        "beta": 0.026091839903595156,
+        "best_top100": "power_law",
+        "delta_bic": 187.5768445510904
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.1.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.9390187680530883,
+        "best_model_bic": "lognormal",
+        "beta": 0.028787090800900424,
+        "best_top100": "power_law",
+        "delta_bic": 153.92247969117167
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.1.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.7658639473672039,
+        "best_model_bic": "lognormal",
+        "beta": 0.023438721577180008,
+        "best_top100": "power_law",
+        "delta_bic": 156.82795758778303
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.1.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8666386299800377,
+        "best_model_bic": "lognormal",
+        "beta": 0.026649065890408122,
+        "best_top100": "power_law",
+        "delta_bic": 132.6319173581752
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.2.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.9021513757612104,
+        "best_model_bic": "lognormal",
+        "beta": 0.027427505334167403,
+        "best_top100": "power_law",
+        "delta_bic": 176.33419959011337
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.2.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.7665452766792422,
+        "best_model_bic": "lognormal",
+        "beta": 0.023315859570411306,
+        "best_top100": "power_law",
+        "delta_bic": 171.5264617669555
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.2.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8238591731070758,
+        "best_model_bic": "lognormal",
+        "beta": 0.025172707493984026,
+        "best_top100": "power_law",
+        "delta_bic": 152.86599904659272
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.3.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8332039693292196,
+        "best_model_bic": "lognormal",
+        "beta": 0.025287366611612884,
+        "best_top100": "power_law",
+        "delta_bic": 166.19757486527314
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.3.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.6958569896072456,
+        "best_model_bic": "lognormal",
+        "beta": 0.021135770396589267,
+        "best_top100": "power_law",
+        "delta_bic": 160.40580537033043
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.3.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8009180168688016,
+        "best_model_bic": "lognormal",
+        "beta": 0.02445632657257421,
+        "best_top100": "power_law",
+        "delta_bic": 153.42709240214242
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.4.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.812081509402198,
+        "best_model_bic": "lognormal",
+        "beta": 0.02478356074698217,
+        "best_top100": "power_law",
+        "delta_bic": 155.4075791686625
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.4.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.7338229605325576,
+        "best_model_bic": "lognormal",
+        "beta": 0.02240132383128891,
+        "best_top100": "power_law",
+        "delta_bic": 163.1238429814623
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.4.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8104263377414536,
+        "best_model_bic": "lognormal",
+        "beta": 0.024807135202083906,
+        "best_top100": "power_law",
+        "delta_bic": 149.69939582239925
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.5.conv1.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.7898505460317998,
+        "best_model_bic": "lognormal",
+        "beta": 0.024230297342504845,
+        "best_top100": "power_law",
+        "delta_bic": 133.70614442643523
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.5.conv2.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.7641154181548742,
+        "best_model_bic": "lognormal",
+        "beta": 0.023574015886695533,
+        "best_top100": "power_law",
+        "delta_bic": 124.77063073278185
+      },
+      {
+        "phase": "trained",
+        "name": "layer3.5.conv3.weight",
+        "stage": 3,
+        "backprop_depth": 2,
+        "gamma": 0.8525725231211543,
+        "best_model_bic": "lognormal",
+        "beta": 0.026191737461971815,
+        "best_top100": "power_law",
+        "delta_bic": 136.53691167089
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.0.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 0.7473015399543554,
+        "best_model_bic": "lognormal",
+        "beta": 0.02258360275764122,
+        "best_top100": "power_law",
+        "delta_bic": 176.50235666663195
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.0.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.352522958948841,
+        "best_model_bic": "exponential",
+        "beta": 0.04939018601004368,
+        "best_top100": "exponential",
+        "delta_bic": -173.57621929306424
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.0.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4781232422920374,
+        "best_model_bic": "exponential",
+        "beta": 0.052604371760146956,
+        "best_top100": "exponential",
+        "delta_bic": -197.6487657558337
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.0.downsample.0.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.3895296049125878,
+        "best_model_bic": "exponential",
+        "beta": 0.04953809382064145,
+        "best_top100": "exponential",
+        "delta_bic": -157.64653558547928
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.1.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4334130607528157,
+        "best_model_bic": "exponential",
+        "beta": 0.051515547217494295,
+        "best_top100": "exponential",
+        "delta_bic": -216.6118905981755
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.1.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.2430332263693185,
+        "best_model_bic": "exponential",
+        "beta": 0.046631308535614494,
+        "best_top100": "exponential",
+        "delta_bic": -145.21491484858964
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.1.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4378423810312215,
+        "best_model_bic": "exponential",
+        "beta": 0.05103120801112248,
+        "best_top100": "exponential",
+        "delta_bic": -198.95435768867372
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.2.conv1.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4378493467265234,
+        "best_model_bic": "exponential",
+        "beta": 0.051297754254276434,
+        "best_top100": "exponential",
+        "delta_bic": -202.66549730401277
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.2.conv2.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.2564885822800258,
+        "best_model_bic": "exponential",
+        "beta": 0.0469082942743681,
+        "best_top100": "exponential",
+        "delta_bic": -137.66008905218968
+      },
+      {
+        "phase": "trained",
+        "name": "layer4.2.conv3.weight",
+        "stage": 4,
+        "backprop_depth": 1,
+        "gamma": 1.4825317163759122,
+        "best_model_bic": "exponential",
+        "beta": 0.05211632018304427,
+        "best_top100": "exponential",
+        "delta_bic": -183.1758937566865
+      },
+      {
+        "phase": "trained",
+        "name": "fc.weight",
+        "stage": 5,
+        "backprop_depth": 0,
+        "gamma": 7.640615275056192,
+        "best_model_bic": "lognormal",
+        "beta": 0.2664923706840015,
+        "best_top100": "exponential",
+        "delta_bic": -151.68682083176367
+      }
+    ]
+  },
+  "trajectory_wins": [
+    {
+      "epoch": 0,
+      "wins": {
+        "lognormal": 39,
+        "exponential": 6,
+        "power_law": 9
+      }
+    },
+    {
+      "epoch": 1,
+      "wins": {
+        "lognormal": 44,
+        "exponential": 1,
+        "power_law": 9
+      }
+    },
+    {
+      "epoch": 3,
+      "wins": {
+        "exponential": 4,
+        "lognormal": 39,
+        "power_law": 11
+      }
+    },
+    {
+      "epoch": 5,
+      "wins": {
+        "exponential": 4,
+        "lognormal": 35,
+        "power_law": 15
+      }
+    },
+    {
+      "epoch": 10,
+      "wins": {
+        "exponential": 7,
+        "lognormal": 37,
+        "power_law": 10
+      }
+    },
+    {
+      "epoch": 15,
+      "wins": {
+        "exponential": 10,
+        "lognormal": 33,
+        "power_law": 11
+      }
+    },
+    {
+      "epoch": 20,
+      "wins": {
+        "exponential": 7,
+        "lognormal": 47
+      }
+    },
+    {
+      "epoch": 25,
+      "wins": {
+        "exponential": 15,
+        "lognormal": 39
+      }
+    }
+  ]
+}
