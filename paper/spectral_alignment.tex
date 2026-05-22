@@ -353,13 +353,13 @@ BIC favors log-normal-in-rank over strict power-law on most CIFAR layers (Figure
 \section*{Reproducibility Statement}
 %% ====================================================================
 
-All empirical claims are reproduced from scripts that measure exact Hessian-vector products per layer. The reproducibility package lives under \texttt{papers/spectral\_alignment/}:
+All empirical claims are reproduced from scripts that measure exact Hessian-vector products per layer. The full reproducibility package is available at \url{https://github.com/9D-Labs/9d-spectral-alignment-decomposition}:
 \begin{itemize}[leftmargin=*,nosep]
     \item \textbf{Frozen outputs:} 15 JSON files in \texttt{results/} covering all tables and figures.
     \item \textbf{Claim verification:} \texttt{verify\_claims.py} checks 27 quantitative claims against JSON; exits~1 on mismatch.
     \item \textbf{Figures:} \texttt{generate\_figures.py} and \texttt{analyze\_kfac\_prediction.py} build all 6 main-text plots from JSON (no GPU).
     \item \textbf{One command:} \texttt{make all} verifies claims, regenerates figures, and compiles the PDF.
-    \item \textbf{Full re-run:} \texttt{run\_experiments.sh} runs all experiments on Modal A10G ($\sim$3--4\,h), copies fresh JSON, and re-verifies.
+    \item \textbf{Full reproduction:} \texttt{EXPERIMENTS.md} documents the measurement protocol for all 10 experiments (Modal A10G, $\sim$3--4\,h total).
 \end{itemize}
 
 %% ====================================================================
