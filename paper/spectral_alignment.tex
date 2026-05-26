@@ -29,7 +29,7 @@
 \DeclareMathOperator{\vecop}{vec}
 
 \title{Spectral Asymptotics of Neural Network Loss Landscapes:\\
-An Exact Decomposition of the Curvature Exponent}
+Decomposing the Curvature Exponent}
 
 \author{%
 \textbf{Anherutowa Calvo\textsuperscript{1}}\\[4pt]
@@ -41,7 +41,7 @@ An Exact Decomposition of the Curvature Exponent}
 \maketitle
 
 \begin{abstract}
-The curvature exponent $\alpha$ in $h_k \propto \sigma_k^\alpha$---governing how Hessian eigenvalues scale with gradient singular values---varies systematically across layer types ($\alpha \approx 2$ for convolutions, $\approx 1$ for transformer attention, $< 1$ for MLP up-projections). Why? We prove the \textbf{Spectral Alignment Decomposition}: $\alpha = 2 + d\log\Phi_k / d\log\sigma_k$, where $\Phi_k$ measures alignment between Kronecker factor eigenbases and gradient singular directions. This reduces ``why does $\alpha$ vary?'' to a geometric question we answer for LayerNorm, residual connections, and softmax heads. The decomposition implies a \textbf{spectral transfer identity} $s = \alpha\gamma$ linking curvature exponent, effective gradient rank-decay $\gamma$, and Hessian decay exponent $s$~\cite{tang2025hessian}. The identity is algebraic; its empirical content is that $\alpha$ and $\gamma$, fit on \emph{independent} data (HVPs vs.\ SVD), recover $s$ to $\approx$2\% median error across 93 layers, five architectures, and three datasets---with no free parameters. A zeta-function bound on participation ratio shows curvature concentrates onto effectively one direction per layer. As a proof of concept, we derive the architecture-adaptive preconditioner $T(\sigma;\alpha)$ and show that \textbf{Spectral Newton}---implementing $T$ in the gradient singular basis---outperforms AdamW on vision benchmarks where $\alpha \approx 2$.
+We study Hessian \emph{directional curvature}---the Rayleigh quotient $h_k = \vecop(u_k v_k^\top)^\top \mathcal{H}\, \vecop(u_k v_k^\top)$---along the singular directions of layer gradients. Empirically, $h_k$ obeys a local spectral law $h_k \propto \sigma_k^\alpha$, with $\alpha$ varying systematically across layer types ($\alpha \approx 2$ for convolutions, $\approx 1$ for transformer attention, $< 1$ for MLP up-projections). Under the Gauss--Newton (GN) Kronecker curvature model, we derive the \textbf{Spectral Alignment Decomposition}: $\alpha = d\log\Lambda_k/d\log\sigma_k + d\log\Phi_k/d\log\sigma_k$, where the first term captures covariance-spectral scaling and the second measures alignment between Kronecker factor eigenbases and gradient singular directions. When eigenbases align, the first term is~2 and deviations from $\alpha = 2$ reduce to a geometric question we answer for LayerNorm, residual connections, and softmax heads. The decomposition implies a finite-window \textbf{spectral transfer relation} $s \approx \alpha\gamma$ linking the curvature exponent, an effective gradient rank-decay $\gamma$, and directional curvature decay $s$. The relation is algebraic; its empirical content is that $\alpha$ and $\gamma$, fit on \emph{independent} data (Hessian-vector products vs.\ SVD), recover $s$ to $\approx$2\% median error across 93 layers, five architectures, and three datasets---with no free parameters. On the measured top-$k$ window, the curvature participation ratio is low ($\mathrm{PR}_h \in [1.0, 1.8]$), consistent with a zeta-function bound. As a proof of concept, we derive the architecture-adaptive preconditioner $T(\sigma;\alpha)$ and show that \textbf{Spectral Newton}---implementing $T$ in the gradient singular basis---outperforms AdamW on vision benchmarks where $\alpha \approx 2$.
 \end{abstract}
 
 %% ====================================================================
@@ -50,17 +50,17 @@ The curvature exponent $\alpha$ in $h_k \propto \sigma_k^\alpha$---governing how
 
 The eigenvalue spectrum of the neural network loss Hessian encodes how optimization navigates parameter space. Recent work has established \emph{what} the spectrum looks like: Hessian eigenvalues decay as power laws with exponent $s$~\cite{tang2025hessian,wu2020dissecting}, weight matrices exhibit heavy-tailed spectral densities correlated with generalization~\cite{martin2021implicit}, and Kronecker-factored approximations capture much of the Hessian structure~\cite{martens2015kfac,grosse2016kfc}. These results describe \emph{different projections} of the same underlying object, but the mechanistic question---\emph{why} $s$ takes the values it does, and how it connects to gradient structure---remains unanswered.
 
-We study curvature \emph{along gradient singular directions}. For layer $\ell$ with gradient $G_\ell = U\Sigma V^\top$, let $h_k$ denote the exact Hessian eigenvalue along direction $u_k v_k^\top$, measured via Hessian-vector products (HVPs). Empirically, $h_k$ follows a power law in the gradient singular value $\sigma_k$:
+We study curvature \emph{along gradient singular directions}. For layer $\ell$ with gradient $G_\ell = U\Sigma V^\top$ (singular value decomposition, SVD), let $h_k$ denote the directional curvature (Rayleigh quotient) $h_k = \vecop(u_k v_k^\top)^\top \mathcal{H} \vecop(u_k v_k^\top)$ along the rank-one direction $u_k v_k^\top$, measured via Hessian-vector products (HVPs). Note that $h_k$ is not a Hessian eigenvalue---$u_k v_k^\top$ is a gradient singular direction, not generally a Hessian eigenvector---but it measures the curvature the optimizer \emph{actually encounters}. Empirically, $h_k$ follows a power law in the gradient singular value $\sigma_k$:
 \begin{equation}\label{eq:power-law}
     h_k = c \cdot \sigma_k^\alpha
 \end{equation}
 The exponent $\alpha$ is \emph{not universal}: it depends on layer type, architecture, and task (Section~\ref{sec:empirical}). Understanding $\alpha$ is the key to predicting which preconditioner a layer requires.
 
-Our central contribution is the \textbf{Spectral Alignment Decomposition} (Theorem~\ref{thm:spectral-alignment}): an exact decomposition of $h_k$ into Kronecker factor eigenvalues and measurable alignment ratios, yielding an identity for $\alpha$ in terms of log-log slopes of these quantities. We then:
+Our central contribution is the \textbf{Spectral Alignment Decomposition} (Theorem~\ref{thm:spectral-alignment}): an identity decomposing $h_k$ into Kronecker factor eigenvalues and measurable alignment ratios under the GN Kronecker curvature model. The decomposition is an accounting identity by construction; its explanatory power comes from architectural predictions about the slopes of its terms (Sections~\ref{sec:mechanisms}--\ref{sec:spectral}). We then:
 \begin{enumerate}[leftmargin=*,nosep]
     \item Derive mechanism-specific predictions for LayerNorm ($\alpha \approx 1$), residual connections, and softmax heads ($\alpha > 2$), validated by controlled ablations.
-    \item Establish the \textbf{spectral transfer identity} $s = \alpha\gamma$: an algebraic link between $\alpha$, an effective rank-decay exponent $\gamma$ fit on gradient singular values, and Hessian decay $s$~\cite{tang2025hessian}, validated on 89 layers across three datasets (Section~\ref{sec:spectral}).
-    \item Bound the curvature participation ratio via the Riemann zeta function, showing learning is effectively one-dimensional per layer.
+    \item Establish the \textbf{spectral transfer relation} $s \approx \alpha\gamma$: an algebraic link between $\alpha$, an effective rank-decay exponent $\gamma$ fit on gradient singular values, and directional curvature decay $s$~\cite{tang2025hessian}, validated on 89 layers across three datasets (Section~\ref{sec:spectral}).
+    \item Bound the curvature participation ratio (PR) via the Riemann zeta function; empirically, $\mathrm{PR}_h \in [1.0, 1.8]$ on the measured top-$k$ window, indicating curvature concentrates onto a few gradient singular directions.
     \item Prescribe architecture-adaptive spectral transfer functions $T(\sigma;\alpha)$ and validate \textbf{Spectral Newton} as their optimizer instantiation (Section~\ref{sec:optimizer-validation}).
 \end{enumerate}
 
@@ -72,7 +72,7 @@ This is a spectral asymptotics result in the spirit of Weyl's law: the decay exp
 
 For layer $\ell$ with weight $W_\ell \in \mathbb{R}^{m \times n}$, gradient $G_\ell = \nabla_{W_\ell}\mathcal{L}$, and mini-batch activations $A \in \mathbb{R}^{B \times n}$, errors $\delta \in \mathbb{R}^{B \times m}$, the gradient factors as $G_\ell = \frac{1}{B}\delta^\top A$. Under the Gauss--Newton (GN) approximation, the per-layer Hessian satisfies $\mathcal{H}_{\mathrm{GN}}^{(\ell)} \approx C_\delta \otimes C_A$ with $C_\delta = \frac{1}{B}\delta^\top\delta$ and $C_A = \frac{1}{B}A^\top A$.
 
-\paragraph{Measurement protocol.} We train models on CIFAR-10 and Tiny-ImageNet-200 to convergence, and also evaluate pretrained ImageNet-1K weights (IMAGENET1K\_V1). For each, we fix a batch of $B=2048$--$4096$ samples, compute top-$k$ gradient singular directions via SVD, and measure $h_k = v_k^\top \mathcal{H} v_k$ via double backpropagation (exact HVP). We fit $\alpha$ by log-log regression on $(\sigma_k, h_k)$. All results use exact HVPs; finite-difference Hessians yield $R^2 \approx 0.17$ with 50\% spurious negative curvatures and are excluded.
+\paragraph{Measurement protocol.} We train models on CIFAR-10 and Tiny-ImageNet-200 to convergence, and also evaluate pretrained ImageNet-1K weights (IMAGENET1K\_V1). For each, we fix a batch of $B=2048$--$4096$ samples, compute top-$k$ gradient singular directions via SVD, and measure directional curvature $h_k = \vecop(u_k v_k^\top)^\top \mathcal{H}\, \vecop(u_k v_k^\top)$ via double backpropagation (exact HVP). We fit $\alpha$ by log-log regression on $(\sigma_k, h_k)$. All results use exact HVPs; finite-difference Hessians yield $R^2 \approx 0.17$ with 50\% spurious negative curvatures and are excluded.
 
 
 \paragraph{Exponents $\alpha$ and $\gamma$.} We fit $\alpha$ from exact HVPs on $(\sigma_k, h_k)$. We define $\gamma$ as the negated log-log slope of rank-ordered $\sigma_k$ on top-$k$ gradient singular values (typically $k{=}20$; $k{=}100$ for extended spectra in Appendix~\ref{app:gamma-profile}). This is an \emph{effective} decay exponent over a finite rank window, not a claim that $\sigma_k$ follows a global power law.
@@ -138,7 +138,7 @@ MLP down-projection & 1.15 & $[1.13, 1.19]$ & 6 \\
 \end{tabular}
 \end{table}
 
-\noindent Conv layers maintain $\alpha \approx 2$ throughout training (emerging from $\sim 1.5$ at initialization; Appendix~\ref{app:training-dynamics}). This holds at scale: ResNet-50 on Tiny-ImageNet (200 classes, 64$\times$64) yields median $\alpha = 1.93$ across 49 conv layers with $R^2 \geq 0.88$. \textbf{On ImageNet-1K} with pretrained weights (IMAGENET1K\_V1), 14 conv layers have median $\alpha = 2.15$ with $R^2 \geq 0.97$ and spectral transfer error 1.6\% (Table~\ref{tab:arch-sweep}). The FC head exhibits opposite trends at different scales: $\alpha = 0.90$ with 200 classes (Tiny-ImageNet) vs.\ $\alpha = 2.83$ with 1000 classes (ImageNet-1K). Both are consistent with the theory: 200 classes produce sparse anisotropic $C_\delta$, pulling $\alpha$ below 2; 1000 classes give $C_\delta$ richer structure that strengthens alignment and pushes $\alpha$ above 2 (Section~\ref{sec:mechanisms}). Full spectrum analysis shows $\alpha$ is stable across quartiles of the singular value index $k$ (Appendix~\ref{app:full-spectrum}).
+\noindent Interior conv layers stabilize in a high-$\alpha$ regime near~2 during training (emerging from $\sim 1.5$ at initialization; Appendix~\ref{app:training-dynamics}). This holds at scale: ResNet-50 on Tiny-ImageNet (200 classes, 64$\times$64) yields median $\alpha = 1.93$ across 49 conv layers with $R^2 \geq 0.88$. \textbf{On ImageNet-1K} with pretrained weights (IMAGENET1K\_V1), 14 conv layers have median $\alpha = 2.15$ with $R^2 \geq 0.97$ and spectral transfer error 1.6\% (Table~\ref{tab:arch-sweep}). The FC head exhibits opposite trends at different scales: $\alpha = 0.90$ with 200 classes (Tiny-ImageNet) vs.\ $\alpha = 2.83$ with 1000 classes (ImageNet-1K). Both are consistent with the theory: 200 classes produce sparse anisotropic $C_\delta$, pulling $\alpha$ below 2; 1000 classes give $C_\delta$ richer structure that strengthens alignment and pushes $\alpha$ above 2 (Section~\ref{sec:mechanisms}). Full spectrum analysis shows $\alpha$ is stable across quartiles of the singular value index $k$ (Appendix~\ref{app:full-spectrum}).
 
 For convolutional layers, $h_k \propto \sigma_k^2$ holds with $R^2 = 0.98$ (median across 21 ResNet-18 layers; full table in Appendix~\ref{app:hvp-table}).
 
@@ -147,10 +147,10 @@ For convolutional layers, $h_k \propto \sigma_k^2$ holds with $R^2 = 0.98$ (medi
 %% ====================================================================
 
 \paragraph{Hessian structure and closed-form spectra.}
-Tang et al.~\cite{tang2025hessian} \emph{discover} power-law Hessian eigenvalue decay $h_k \propto k^{-s}$ across CNNs and LLMs and use it to predict generalization. Their contribution is the observation and its statistical characterization; they do not explain \emph{why} $s$ takes the values it does or how $s$ relates to gradient structure. Our work \emph{decomposes} $s$ via the spectral transfer identity $s = \alpha\gamma$: the Hessian decay exponent is the product of a curvature--gradient alignment exponent $\alpha$ (which we trace to Kronecker factor eigenbases, Theorem~\ref{thm:spectral-alignment}) and an effective gradient rank-decay exponent $\gamma$. In short, Tang et al.\ measure $s$; we explain $s$. Wu et al.~\cite{wu2020dissecting} identify shared Hessian structure across architectures. Recent work derives \emph{closed-form} Hessian spectra for shallow networks~\cite{singh2026cracking}, complementing our layer-wise \emph{structural} decomposition for deep trained models.
+Tang et al.~\cite{tang2025hessian} \emph{discover} power-law Hessian eigenvalue decay $\lambda_k \propto k^{-s}$ across CNNs and LLMs and use it to predict generalization. Their contribution is the observation and its statistical characterization; they do not explain \emph{why} $s$ takes the values it does or how $s$ relates to gradient structure. Our work \emph{decomposes} $s$ via the spectral transfer relation $s \approx \alpha\gamma$: the directional curvature decay exponent is the product of a curvature--gradient alignment exponent $\alpha$ (which we trace to Kronecker factor eigenbases, Theorem~\ref{thm:spectral-alignment}) and an effective gradient rank-decay exponent $\gamma$. In short, Tang et al.\ measure $s$; we explain $s$. Wu et al.~\cite{wu2020dissecting} identify shared Hessian structure across architectures. Recent work derives \emph{closed-form} Hessian spectra for shallow networks~\cite{singh2026cracking}, complementing our layer-wise \emph{structural} decomposition for deep trained models.
 
 \paragraph{Kronecker factorization and layer-wise preconditioning.}
-K-FAC~\cite{martens2015kfac,grosse2016kfc} and Shampoo~\cite{gupta2018shampoo} approximate curvature with Kronecker factors $C_\delta \otimes C_A$. Zhang et al.~\cite{zhang2025concurrence} prove that layer-wise Kronecker preconditioning is \emph{provably necessary} for feature learning in certain regimes---our Spectral Alignment Decomposition gives a per-layer spectral explanation (alignment ratios $\rho_k$, $\cos^2\theta_k$) for when the approximation is accurate. ESO~\cite{chen2026eso} builds efficient spectral preconditioners via truncated Shampoo; our $s=\alpha\gamma$ identity predicts which layers tolerate low-rank spectral truncation (steep $s$, concentrated curvature) vs.\ which require richer structure.
+Kronecker-factored Approximate Curvature (K-FAC)~\cite{martens2015kfac,grosse2016kfc} and Shampoo~\cite{gupta2018shampoo} approximate curvature with Kronecker factors $C_\delta \otimes C_A$. Zhang et al.~\cite{zhang2025concurrence} prove that layer-wise Kronecker preconditioning is \emph{provably necessary} for feature learning in certain regimes---our Spectral Alignment Decomposition gives a per-layer spectral explanation (alignment ratios $\rho_k$, curvature ratio $\chi_k$) for when the approximation is accurate. ESO~\cite{chen2026eso} builds efficient spectral preconditioners via truncated Shampoo; our $s \approx \alpha\gamma$ relation predicts which layers tolerate low-rank spectral truncation (steep $s$, concentrated curvature) vs.\ which require richer structure.
 
 \paragraph{Heavy-tailed self-regularization.}
 Martin--Mahoney~\cite{martin2021implicit} relate weight matrix tail exponents to generalization. Corollary~\ref{cor:htsr} connects their $\alpha_{\mathrm{weight}}$ to our $(\alpha, \gamma, s)$ triad.
@@ -173,17 +173,20 @@ Let $G = U\Sigma V^\top$ be the gradient SVD, and $C_\delta = Q_\delta \Lambda_\
 \begin{theorem}[Spectral Alignment Decomposition]\label{thm:spectral-alignment}
 Under $\mathcal{H}_{\mathrm{GN}}^{(\ell)} \approx C_\delta \otimes C_A$:
 \begin{enumerate}[leftmargin=*,nosep]
-    \item \textbf{(Exact decomposition.)}
+    \item \textbf{(Decomposition identity.)}
     $h_k = \rho_k^{(\delta)} \cdot \rho_k^{(A)} \cdot [\Lambda_\delta]_{kk} \cdot [\Lambda_A]_{kk}$.
-    \item \textbf{($\alpha$ as alignment slope.)} With $\Phi_k = \rho_k^{(\delta)}\rho_k^{(A)}$ and power-law fit $h_k = c\sigma_k^\alpha$:
+
+    This is an accounting identity given the Kronecker curvature model; its explanatory power comes from the empirical predictions below.
+    \item \textbf{($\alpha$ as alignment slope.)} With $\Phi_k = \rho_k^{(\delta)}\rho_k^{(A)}$, $\beta = d\log\Lambda_k / d\log\sigma_k$ (the covariance-spectral exponent), and power-law fit $h_k = c\sigma_k^\alpha$:
     \begin{equation}\label{eq:alpha-decomp}
-        \alpha = \frac{d \log \Lambda_k}{d \log \sigma_k} + \frac{d \log \Phi_k}{d \log \sigma_k}, \quad \Lambda_k = [\Lambda_\delta]_{kk}[\Lambda_A]_{kk}
+        \alpha = \underbrace{\frac{d \log \Lambda_k}{d \log \sigma_k}}_{\displaystyle\beta} + \underbrace{\frac{d \log \Phi_k}{d \log \sigma_k}}_{\displaystyle\phi}, \qquad \Lambda_k = [\Lambda_\delta]_{kk}[\Lambda_A]_{kk}
     \end{equation}
-    \item \textbf{(Canonical form.)} When $Q_\delta = U$, $Q_A = V$ (perfect alignment), $[\Lambda_\delta]_{kk}[\Lambda_A]_{kk} = \sigma_k^2/\cos^2\theta_k$ and
+    The special case $\beta = 2$ holds when Kronecker factor eigenbases align with gradient singular directions (Theorem~\ref{thm:curvature-baseline}); this is empirically typical for convolutional layers.
+    \item \textbf{(Canonical form.)} When $Q_\delta = U$, $Q_A = V$ (perfect alignment), $[\Lambda_\delta]_{kk}[\Lambda_A]_{kk} = \sigma_k^2/\chi_k$ and
     \begin{equation}\label{eq:alpha-general}
-        \alpha = 2 + \frac{d \log \Phi_k}{d \log \sigma_k} - \frac{d \log \cos^2\!\theta_k}{d \log \sigma_k}
+        \alpha = 2 + \frac{d \log \Phi_k}{d \log \sigma_k} - \frac{d \log \chi_k}{d \log \sigma_k}
     \end{equation}
-    where $\cos^2\theta_k = h_k^{\mathrm{exact}}/h_k^{\mathrm{Kron}}$ measures the GN-to-exact gap.
+    where $\chi_k = h_k^{\mathrm{exact}}/h_k^{\mathrm{Kron}}$ is the \emph{curvature ratio} measuring the GN-to-exact gap. Note $\chi_k$ can exceed~1 (Section~\ref{sec:conv-gap}).
 \end{enumerate}
 \end{theorem}
 
@@ -192,11 +195,11 @@ Under $\mathcal{H}_{\mathrm{GN}}^{(\ell)} \approx C_\delta \otimes C_A$:
 
 \textbf{Part 2.} Taking logs: $\log h_k = \log\Phi_k + \log\Lambda_k$. If $h_k = c\sigma_k^\alpha$, then $d\log h_k / d\log\sigma_k = \alpha$. Differentiating the decomposition yields Eq.~\eqref{eq:alpha-decomp}.
 
-\textbf{Part 3.} When $Q_\delta = U$ and $Q_A = V$, we have $\rho_k^{(\delta)} = \rho_k^{(A)} = 1$, so $\Phi_k = 1$. Under the alignment condition of Theorem~\ref{thm:curvature-baseline}, $[\Lambda_\delta]_{kk} [\Lambda_A]_{kk} = \sigma_k^2 / \cos^2\theta_k$, hence $d\log\Lambda_k / d\log\sigma_k = 2 - d\log\cos^2\theta_k / d\log\sigma_k$. Substituting into Part~2 with $d\log\Phi_k = 0$ gives Eq.~\eqref{eq:alpha-general}.
+\textbf{Part 3.} When $Q_\delta = U$ and $Q_A = V$, we have $\rho_k^{(\delta)} = \rho_k^{(A)} = 1$, so $\Phi_k = 1$. Under the alignment condition of Theorem~\ref{thm:curvature-baseline}, $[\Lambda_\delta]_{kk} [\Lambda_A]_{kk} = \sigma_k^2 / \chi_k$, hence $d\log\Lambda_k / d\log\sigma_k = 2 - d\log\chi_k / d\log\sigma_k$. Substituting into Part~2 with $d\log\Phi_k = 0$ gives Eq.~\eqref{eq:alpha-general}.
 \end{proof}
 
 \begin{remark}
-Equation~\eqref{eq:alpha-general} is the central result: $\alpha$ deviates from $2$ iff $\Phi_k$ or $\cos^2\theta_k$ correlate with $\sigma_k$. When both are $k$-independent, $\alpha = 2$ regardless of their magnitudes.
+Equation~\eqref{eq:alpha-general} is the central result: $\alpha$ deviates from $2$ iff $\Phi_k$ or $\chi_k$ correlate with $\sigma_k$. When both are $k$-independent, $\alpha = 2$ regardless of their magnitudes. The decomposition is an identity under the GN/Kronecker curvature model---its predictive value lies in the fact that $\beta$, $\phi$, and $\chi_k$ are independently measurable and architecturally interpretable (Sections~\ref{sec:mechanisms}--\ref{sec:spectral}).
 \end{remark}
 
 \begin{theorem}[Baseline: $\alpha = 2$ under perfect alignment]\label{thm:curvature-baseline}
@@ -211,12 +214,12 @@ We now show how each architectural component produces a specific pattern in $\Ph
 
 \subsection{LayerNorm}
 
-\begin{theorem}[LayerNorm flattens activation alignment]\label{thm:layernorm}
-For $y = W \cdot \mathrm{LN}(x)$, the activation covariance $C_A^{\mathrm{LN}} = \Gamma \hat{C} \Gamma$ with $\hat{C}$ the normalized-input covariance. The condition number $\kappa(\hat{C}|_{\mathbf{1}^\perp}) = 1 + O(\sqrt{n/B})$, and $\rho_k^{(A)}$ is confined to a $\sigma_k$-independent band. Thus $d\log\rho_k^{(A)}/d\log\sigma_k \approx 0$, reducing $\alpha$ from $2$ toward $1$.
-\end{theorem}
+\begin{proposition}[LayerNorm flattens activation alignment (idealized model)]\label{thm:layernorm}
+Under an isotropic random-feature model for normalized activations (sub-Gaussian, weakly correlated features): for $y = W \cdot \mathrm{LN}(x)$, the activation covariance $C_A^{\mathrm{LN}} = \Gamma \hat{C} \Gamma$ with $\hat{C}$ the normalized-input covariance. The condition number $\kappa(\hat{C}|_{\mathbf{1}^\perp}) = 1 + O(\sqrt{n/B})$ by Bai--Yin~\cite{baiyin1993}, and $\rho_k^{(A)}$ is confined to a $\sigma_k$-independent band. Thus $d\log\rho_k^{(A)}/d\log\sigma_k \approx 0$, reducing $\alpha$ from $2$ toward $1$. Real transformer activations have richer correlation structure; the proposition provides an idealized baseline that we validate empirically in Appendix~\ref{app:ablations}.
+\end{proposition}
 
 \begin{corollary}\label{cor:ln-alpha}
-With $\cos^2\theta_k$ approximately constant, $\alpha \approx 1 + d\log\rho_k^{(\delta)}/d\log\sigma_k$. If $u_k^\top C_\delta u_k \propto \sigma_k$, then $\alpha \approx 1$.
+With $\chi_k$ approximately constant, $\alpha \approx 1 + d\log\rho_k^{(\delta)}/d\log\sigma_k$. If $u_k^\top C_\delta u_k \propto \sigma_k$, then $\alpha \approx 1$.
 \end{corollary}
 
 \subsection{Residual connections}
@@ -225,7 +228,7 @@ With $\cos^2\theta_k$ approximately constant, $\alpha \approx 1 + d\log\rho_k^{(
 In $y = x + f(x)$ with skip-dominated regime ($\|J_f^\top \delta_{\mathrm{out}}\| \ll \|\delta_{\mathrm{out}}\|$), $C_\delta \approx C_{\delta_{\mathrm{out}}}$ whose eigenvectors bear no relation to current-layer $u_k$. Thus $\rho_k^{(\delta)}$ has no systematic $\sigma_k$ dependence and $d\log\rho_k^{(\delta)}/d\log\sigma_k \approx 0$.
 \end{proposition}
 
-Combined with LayerNorm, $\alpha \approx 2 - d\log\cos^2\theta_k/d\log\sigma_k$, explaining MLP up-projections with $\alpha \approx 0.8$.
+Combined with LayerNorm, $\alpha \approx 2 - d\log\chi_k/d\log\sigma_k$, explaining MLP up-projections with $\alpha \approx 0.8$.
 
 \subsection{Softmax concentration}
 
@@ -233,9 +236,9 @@ Combined with LayerNorm, $\alpha \approx 2 - d\log\cos^2\theta_k/d\log\sigma_k$,
 For output layer with $c$ classes, $C_\delta$ has rank $\leq c$. Top singular vectors of $G$ align with top eigenvectors of $C_\delta$, giving $\rho_k^{(\delta)} \approx 1$ for $k \leq c$ and $\rho_k^{(\delta)} \ll 1$ beyond---a sharp drop creating $d\log\Phi_k/d\log\sigma_k > 0$ and $\alpha > 2$.
 \end{proposition}
 
-\subsection{The conv gap: GN vs.\ Kronecker}
+\subsection{The conv gap: GN vs.\ Kronecker}\label{sec:conv-gap}
 
-For conv layers, $\cos^2\theta_k \sim 10^3$--$10^7$ yet $\alpha \approx 2$. The \emph{concentration ratio} $\bar{h}^{\mathrm{SoP}}/\bar{h}^{\mathrm{PoS}} \approx 1$ (Kronecker factorization is accurate), while $\cos^2\theta_k \gg 1$ (GN-to-exact gap from weight-sharing). What matters for $\alpha$ is the \emph{slope} $d\log\cos^2\theta_k/d\log\sigma_k \approx 0$, not the magnitude (Appendix~\ref{app:conv-gap}).
+For conv layers, the curvature ratio $\chi_k = h_k^{\mathrm{exact}}/h_k^{\mathrm{Kron}} \sim 10^3$--$10^7$ yet $\alpha \approx 2$. Although $\chi_k$ can be very large in magnitude, what matters for $\alpha$ is the \emph{log-slope} $d\log\chi_k/d\log\sigma_k \approx 0$, not the magnitude: the GN-to-exact gap from weight-sharing is approximately rank-independent. The \emph{concentration ratio} $\bar{h}^{\mathrm{SoP}}/\bar{h}^{\mathrm{PoS}} \approx 1$ confirms that Kronecker factorization is accurate; $\chi_k \gg 1$ reflects the GN approximation error (Appendix~\ref{app:conv-gap}).
 
 \subsection{Refined prediction: LayerNorm is necessary but not sufficient}
 
@@ -249,22 +252,22 @@ ViT-Tiny on CIFAR-10 has LayerNorm yet $\alpha \approx 2$. Controlled ablations 
 
 Three exponents summarize the spectral structure: curvature $\alpha$ ($h_k \propto \sigma_k^\alpha$), effective gradient rank decay $\gamma$ (slope of $\log \sigma_k$ vs.\ $\log k$ on top-$k$ directions), and Hessian decay $s$ ($\lambda_k \sim k^{-s}$ along comparable directions)~\cite{tang2025hessian}.
 
-\begin{theorem}[Spectral transfer identity]\label{thm:triangle}
-Suppose $\sigma_k \sim k^{-\gamma}$ and $h_k = c\sigma_k^\alpha$ on a rank interval. Then $\lambda_k \sim k^{-s}$ with $s = \alpha\gamma$.
-\end{theorem}
+\begin{proposition}[Spectral transfer relation]\label{thm:triangle}
+Suppose $\sigma_k \sim k^{-\gamma}$ and $h_k = c\sigma_k^\alpha$ hold as effective power laws on a finite rank window $[k_1, k_2]$. Then directional curvature decays as $h_k \sim k^{-s}$ with $s = \alpha\gamma$ on that window.
+\end{proposition}
 
 \begin{proof}
-$\lambda_k = h_k = c(c' k^{-\gamma})^\alpha = c'' k^{-\alpha\gamma}$.
+$h_k = c(c' k^{-\gamma})^\alpha = c'' k^{-\alpha\gamma}$.
 \end{proof}
 
-\begin{remark}[Why this is not a tautology]\label{rem:not-tautology}
-The identity $s = \alpha\gamma$ is algebraic under the local power-law ansatz---the one-line proof is intentional. The empirical content is threefold: \textbf{(i)}~$\alpha$ and $\gamma$ are fit on \emph{different} data ($(\sigma_k, h_k)$ from HVPs vs.\ $(\log k, \log\sigma_k)$ from SVD), yet their product recovers $s$ from rank-ordered curvatures to median error \textbf{1.9\%} on CIFAR, \textbf{1.0\%} on Tiny-ImageNet, \textbf{1.6\%} on ImageNet-1K (Figure~\ref{fig:triangle}); \textbf{(ii)}~$\sigma_k$ is \emph{not} globally $k^{-\gamma}$---BIC selects log-normal over power-law on most layers (Figure~\ref{fig:rank-profile}; Appendix~\ref{app:gamma-profile})---yet the effective exponent $\gamma$ on the top-$k$ window still produces a tight identity; and \textbf{(iii)}~the identity holds across 93 layers spanning five architectures and three datasets with no free parameters. A tautology produces no testable predictions; this identity is violated whenever the local power-law ansatz breaks down, and it \emph{does} break at boundary layers (Appendix~\ref{app:triangle}).
+\begin{remark}[Empirical content of the spectral transfer relation]\label{rem:not-tautology}
+The relation $s = \alpha\gamma$ is algebraic under the local power-law ansatz---the one-line proof is intentional. Its empirical content is threefold: \textbf{(i)}~$\alpha$ and $\gamma$ are fit on \emph{different} data ($(\sigma_k, h_k)$ from HVPs vs.\ $(\log k, \log\sigma_k)$ from SVD), yet their product recovers $s$ from rank-ordered curvatures to median error \textbf{1.9\%} on CIFAR, \textbf{1.0\%} on Tiny-ImageNet, \textbf{1.6\%} on ImageNet-1K (Figure~\ref{fig:triangle}); \textbf{(ii)}~$\sigma_k$ is \emph{not} globally $k^{-\gamma}$---Bayesian Information Criterion (BIC) selects log-normal over power-law on most layers (Figure~\ref{fig:rank-profile}; Appendix~\ref{app:gamma-profile})---yet the effective exponent $\gamma$ on the top-$k$ window still produces a tight relation; and \textbf{(iii)}~the relation holds across 93 layers spanning five architectures and three datasets with no free parameters. A pure tautology produces no testable predictions; this relation is violated whenever the local power-law ansatz breaks down, and it \emph{does} break at boundary layers (Appendix~\ref{app:triangle}).
 \end{remark}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.58\linewidth]{fig2_alpha_triangle.pdf}
-\caption{Measured Hessian decay $s$ vs.\ predicted $s=\alpha\gamma$ across 93 layers and five architectures/datasets. Points near the diagonal validate the spectral transfer identity; shaded band is $\pm10\%$. Color indicates data source.}
+\caption{Measured directional curvature decay $s$ vs.\ predicted $s=\alpha\gamma$ across 93 layers and five architectures/datasets. Points near the diagonal validate the spectral transfer relation; shaded band is $\pm10\%$. Color indicates data source.}
 \label{fig:triangle}
 \end{figure}
 
@@ -275,21 +278,21 @@ The identity $s = \alpha\gamma$ is algebraic under the local power-law ansatz---
 \label{fig:rank-profile}
 \end{figure}
 
-\begin{corollary}[Connection to HT-SR]\label{cor:htsr}
-Martin--Mahoney's weight tail exponent $\alpha_{\mathrm{weight}}$~\cite{martin2021implicit} is constrained by $s = \alpha\gamma$ governing the Hessian spectrum. We find $\alpha_{\mathrm{weight}} < s$ consistently, consistent with heavier weight tails correlating with better generalization.
+\begin{corollary}[Connection to Heavy-Tailed Self-Regularization (HT-SR)]\label{cor:htsr}
+Martin--Mahoney's weight tail exponent $\alpha_{\mathrm{weight}}$~\cite{martin2021implicit} is constrained by $s \approx \alpha\gamma$ governing directional curvature decay. We find $\alpha_{\mathrm{weight}} < s$ consistently, consistent with heavier weight tails correlating with better generalization.
 \end{corollary}
 
 \subsection{Near-rank-one curvature}
 
-\begin{theorem}[Zeta function bound]\label{thm:rank-one}
-With $h_k \sim k^{-\alpha\gamma}$, the participation ratio $\mathrm{PR}_h = (\sum h_k)^2 / \sum h_k^2 \leq \zeta(\alpha\gamma)^2 / \zeta(2\alpha\gamma)$, bounded for $\alpha\gamma > 1$. For $\alpha\gamma = 2$: $\mathrm{PR}_h \lesssim 2.5$.
-\end{theorem}
+\begin{proposition}[Zeta function bound on curvature participation]\label{thm:rank-one}
+Assuming $h_k \sim k^{-\alpha\gamma}$ extends over the measured rank window with $\alpha\gamma > 1$, the participation ratio $\mathrm{PR}_h = (\sum h_k)^2 / \sum h_k^2 \leq \zeta(\alpha\gamma)^2 / \zeta(2\alpha\gamma)$. For $\alpha\gamma = 2$: $\mathrm{PR}_h \lesssim 2.5$.
+\end{proposition}
 
-\noindent Despite hundreds of singular directions, curvature concentrates onto $\mathrm{PR}_h \in [1.0, 1.8]$ while gradients span moderate-dimensional subspaces ($\mathrm{PR}_{\mathrm{grad}} \in [1.8, 58]$; Appendix~\ref{app:pr-table}). Width scaling from $n=64$ to $512$ changes PR by only 0.7 (Appendix~\ref{app:pr-scaling}).
+\noindent On the measured top-$k$ window, curvature is highly concentrated: $\mathrm{PR}_h \in [1.0, 1.8]$, suggesting that second-order information along a few gradient singular directions captures most of the layer-wise curvature mass. Gradients span moderate-dimensional subspaces ($\mathrm{PR}_{\mathrm{grad}} \in [1.8, 58]$; Appendix~\ref{app:pr-table}). Width scaling from $n=64$ to $512$ changes PR by only 0.7 (Appendix~\ref{app:pr-scaling}). The bound applies under the power-law ansatz; real spectra have finite-rank effects and non-power-law tails that limit its applicability (see BIC results, Appendix~\ref{app:gamma-profile}).
 
 \subsection{From decomposition to Spectral Newton}\label{sec:optimizer-validation}
 
-The decomposition predicts \emph{which layers} admit Kronecker-style curvature approximations: when $|\alpha - 2|$ is small and the concentration ratio $\bar{h}^{\mathrm{SoP}}/\bar{h}^{\mathrm{PoS}} \approx 1$, the Kronecker product-of-means matches the exact mean-of-products Hessian along gradient directions (Figure~\ref{fig:kfac-pred}). Conversely, layers with $\alpha \ll 2$ (LayerNorm + large output dimension) or $\alpha \gg 2$ (softmax heads) break alignment; full Hessian or task-specific preconditioning is required, consistent with K-FAC/Shampoo using richer structure than diagonal Adam.
+The decomposition predicts \emph{which layers} admit Kronecker-style curvature approximations: when $|\alpha - 2|$ is small and the concentration ratio $\bar{h}^{\mathrm{SoP}}/\bar{h}^{\mathrm{PoS}} \approx 1$, the Kronecker product-of-means matches the exact mean-of-products Hessian along gradient directions (Figure~\ref{fig:kfac-pred}). Conversely, layers with $\alpha \ll 2$ (LayerNorm + large output dimension) or $\alpha \gg 2$ (softmax heads) break alignment; full Hessian or task-specific preconditioning is required, consistent with K-FAC and Shampoo using richer structure than diagonal Adam.
 
 \paragraph{Prescriptive transfer function.}
 When $h_k \propto \sigma_k^\alpha$, the optimal step along singular direction $k$ scales as $T(\sigma_k;\alpha) = \sigma_k/(\sigma_k^\alpha + d)$ rather than a uniform spectral flattening (Muon) or a single scalar per layer. For convolutional layers with $\alpha \approx 2$, this reduces to Spectral Newton (SN): $\Delta W = U\,\diag(\sigma_k/(\sigma_k^2+d))\,V^\top$ for $G = U\Sigma V^\top$. Per-layer $\alpha$ from Table~\ref{tab:arch-sweep} selects the family member---$\alpha \approx 1$ for transformers suggests $T(\sigma) = \sigma/(\sigma+d)$ instead.
@@ -325,13 +328,13 @@ ResNet-50 & CIFAR-100 & 30 & 72.6 & \textbf{75.0} \\
 %% ====================================================================
 
 \paragraph{Spectral asymptotics interpretation.}
-The identity $\alpha = 2 + d\log\Phi_k/d\log\sigma_k$ is a Weyl-law analog: the decay exponent of curvature along gradient directions encodes the \emph{alignment geometry} of the loss Hessian restricted to the gradient subspace. Just as $\lambda_k \sim k^{2/d}$ reveals manifold dimension $d$, $\alpha$ reveals how Kronecker factor eigenbases align with gradient singular directions.
+The identity $\alpha = \beta + \phi$ is a Weyl-law analog: the decay exponent of directional curvature along gradient directions encodes the \emph{alignment geometry} of the loss Hessian restricted to the gradient subspace. Just as $\lambda_k \sim k^{2/d}$ reveals manifold dimension $d$, $\alpha$ reveals how Kronecker factor eigenbases align with gradient singular directions. When $\beta \approx 2$ (the canonical case for convolutions), the residual $\phi = d\log\Phi_k/d\log\sigma_k$ isolates the contribution of eigenbasis misalignment.
 
 \paragraph{Optimizer implications.}
-The decomposition yields curvature-adaptive transfer functions $T(\sigma;\alpha) = \sigma/(\sigma^\alpha + d)$ with architecture-dependent $\alpha$. As directional evidence, Spectral Newton implements this prescription in the gradient singular basis and outperforms AdamW on vision benchmarks where $\alpha \approx 2$ (Table~\ref{tab:sn-vision}; single-seed, proof of concept). The deeper structural insight is that Kronecker-style methods are justified when $|\alpha-2|$ is small (Figure~\ref{fig:kfac-pred}), and that scalar per-layer scaling from $s=\alpha\gamma$ fails because eigenvector alignment (Theorem~\ref{thm:spectral-alignment}) is directional---the theory prescribes $T(\sigma_k;\alpha_\ell)$ per singular direction, not one learning rate per layer.
+The decomposition yields curvature-adaptive transfer functions $T(\sigma;\alpha) = \sigma/(\sigma^\alpha + d)$ with architecture-dependent $\alpha$. As directional evidence, Spectral Newton implements this prescription in the gradient singular basis and outperforms AdamW on vision benchmarks where $\alpha \approx 2$ (Table~\ref{tab:sn-vision}; single-seed, proof of concept). The deeper structural insight is that Kronecker-style methods are justified when $|\alpha-2|$ is small (Figure~\ref{fig:kfac-pred}), and that scalar per-layer scaling from $s \approx \alpha\gamma$ fails because eigenvector alignment (Theorem~\ref{thm:spectral-alignment}) is directional---the theory prescribes $T(\sigma_k;\alpha_\ell)$ per singular direction, not one learning rate per layer.
 
 \paragraph{Gradient rank profile and phase transitions.}
-BIC favors log-normal-in-rank over strict power-law on most CIFAR layers (Figure~\ref{fig:rank-profile}). During training, the winning rank model shifts: Figure~\ref{fig:phase-transition} shows VGG-16 on Tiny-ImageNet transitioning from log-normal dominance at initialization toward mixed power-law/exponential regimes by epoch 15--25 (slower than ResNet-50, where the transition peaks by epoch 5). Thus $\gamma$ is an effective exponent; Appendix~\ref{app:kronecker-identity} shows that the same Kronecker factors predict the rank-profile shape.
+BIC model selection favors log-normal-in-rank over strict power-law on most CIFAR layers (Figure~\ref{fig:rank-profile}). During training, the winning rank model shifts: Figure~\ref{fig:phase-transition} shows VGG-16 on Tiny-ImageNet transitioning from log-normal dominance at initialization toward mixed power-law/exponential regimes by epoch 15--25 (slower than ResNet-50, where the transition peaks by epoch 5). Thus $\gamma$ is an effective exponent; Appendix~\ref{app:kronecker-identity} shows that the same Kronecker factors predict the rank-profile shape.
 
 \begin{figure}[t]
 \centering
@@ -341,8 +344,9 @@ BIC favors log-normal-in-rank over strict power-law on most CIFAR layers (Figure
 \end{figure}
 
 \paragraph{Limitations and open questions.}
-\textbf{Scale.} Our largest models are GPT-2 (6-layer, 85M) and ResNet-50; the theory is architecture-generic and makes concrete, falsifiable predictions at larger scales---for instance, Theorem~\ref{thm:spectral-alignment} predicts that ViT-Large attention layers will exhibit $\alpha \approx 1$ (driven by LayerNorm-induced alignment collapse, Section~\ref{sec:mechanisms}) and that LLaMA-7B MLP layers will follow $\alpha < 1.2$ with the same Kronecker decomposition---but we have not yet verified these. Validation at the 1--10B parameter regime is the most important next step.
-\textbf{Spectral Newton.} SN results (Table~\ref{tab:sn-vision}) are single-seed, single-architecture, and serve as directional evidence rather than a comprehensive optimizer comparison. Multi-seed evaluation with wall-clock accounting is needed.
+\textbf{Directional curvature, not eigenvalues.} Throughout this work, $h_k$ denotes directional curvature (Rayleigh quotient) along gradient singular directions, not true Hessian eigenvalues. The spectral transfer relation $s \approx \alpha\gamma$ describes decay of these directional curvatures; connecting $s$ to the true Hessian eigenvalue spectrum requires showing that gradient singular directions approximate Hessian eigenvectors, which we verify empirically ($R^2 > 0.99$ for most conv layers, Appendix~\ref{app:hvp-table}) but do not prove in general.
+\textbf{Scale.} Our largest models are GPT-2 (6-layer, 85M) and ResNet-50; the theory is architecture-generic and makes concrete, falsifiable predictions at larger scales---for instance, the decomposition predicts that ViT-Large attention layers will exhibit $\alpha \approx 1$ (driven by LayerNorm-induced alignment collapse, Section~\ref{sec:mechanisms}) and that LLaMA-7B MLP layers will follow $\alpha < 1.2$ with the same Kronecker decomposition---but we have not yet verified these. Validation at the 1--10B parameter regime is the most important next step.
+\textbf{Spectral Newton (SN).} SN results (Table~\ref{tab:sn-vision}) are single-seed, single-architecture, and serve as directional evidence rather than a comprehensive optimizer comparison. Multi-seed evaluation with wall-clock and FLOP accounting, and comparison against K-FAC, Shampoo, and Muon, is needed.
 \begin{enumerate}[leftmargin=*,nosep]
     \item Extend the zeta PR bound to log-normal or exponential rank spectra via Tauberian theorems.
     \item Validate the full Kronecker spectral theory at LLM scale (ViT-Large, LLaMA-7B, GPT-3 class).
@@ -469,15 +473,17 @@ MLP down & 1.15 & 1.85 & $+0.69$ \\
 \small
 \begin{tabular}{lccc}
 \toprule
-\textbf{Layer} & $\cos^2\theta_k$ & Conc.\ ratio & $\alpha$ \\
+\textbf{Layer} & $\chi_k$ (curvature ratio) & Conc.\ ratio & $\alpha$ \\
 \midrule
-conv1 & $10^7$ scale & 0.88 & 1.99 \\
-layer2.0.conv1 & $10^5$ scale & 0.98 & 2.57 \\
-layer4.0.conv2 & $10^3$ scale & 0.59 & 2.23 \\
-fc & $10^4$ scale & 0.88 & 1.64 \\
+conv1 & $\sim 10^7$ & 0.88 & 1.99 \\
+layer2.0.conv1 & $\sim 10^5$ & 0.98 & 2.57 \\
+layer4.0.conv2 & $\sim 10^3$ & 0.59 & 2.23 \\
+fc & $\sim 10^4$ & 0.88 & 1.64 \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\noindent Although the curvature ratio $\chi_k$ can be very large, its log-slope with respect to $\sigma_k$ is near zero for most layers, so it does not substantially shift $\alpha$ from the baseline $\beta \approx 2$. Note that layer2.0.conv1 has $\alpha = 2.57$, reflecting non-negligible $d\log\chi_k/d\log\sigma_k$ in that layer.
 
 \section{Training Dynamics of $\alpha$}\label{app:training-dynamics}
 
@@ -497,7 +503,7 @@ fc & 1.99 & 1.05 & 1.33 & 1.16 & 1.31 & 1.57 \\
 \end{tabular}
 \end{center}
 
-Conv layers converge to $\alpha \approx 2$; FC layers decrease as softmax concentration develops.
+Interior conv layers move toward a stable high-$\alpha$ regime near~2 (layer2.conv2 reaches 2.12), while the boundary layer conv1 plateaus near 1.8. FC layers undergo a sharp early drop (1.99 $\to$ 1.05 by epoch~1) and remain below the conv regime throughout training, consistent with developing softmax concentration.
 
 \section{Full Spectrum Analysis}\label{app:full-spectrum}
 
@@ -517,7 +523,7 @@ layer3.conv2 & 2.07 & 2.07 & 2.79 & 1.93 \\
 
 \section{Gradient Rank Profile and $\gamma$}\label{app:gamma-profile}
 
-We compare three rank-ordered models for $\sigma_k$: power law $\sigma_k \propto k^{-\gamma}$, exponential $\sigma_k \propto e^{-\beta k}$, and log-normal in rank ($\log\sigma_k$ quadratic in $\log k$), using BIC.
+We compare three rank-ordered models for $\sigma_k$: power law $\sigma_k \propto k^{-\gamma}$, exponential $\sigma_k \propto e^{-\beta k}$, and log-normal in rank ($\log\sigma_k$ quadratic in $\log k$), using the Bayesian Information Criterion (BIC).
 
 \begin{center}
 \small
@@ -565,7 +571,7 @@ Single-hidden-layer MLPs on CIFAR-10: PR grows from 2.5 ($n=64$) to 3.3 ($n=512$
 
 \section{Proof Details}\label{app:proofs}
 
-\subsection{LayerNorm (Theorem~\ref{thm:layernorm})}
+\subsection{LayerNorm (Proposition~\ref{thm:layernorm})}
 $C_A^{\mathrm{LN}} = \Gamma \hat{C} \Gamma$ with $\hat{x}_i^\top \mathbf{1} = 0$. By Bai--Yin~\cite{baiyin1993}, $\kappa(\hat{C}|_{\mathbf{1}^\perp}) = 1 + O(\sqrt{n/B})$. The Rayleigh quotient $\rho_k^{(A)}$ is bounded in a $k$-independent interval, so $d\log\rho_k^{(A)}/d\log\sigma_k \to 0$.
 
 \subsection{Softmax (Proposition~\ref{prop:softmax})}

@@ -1,6 +1,6 @@
 # Spectral Alignment Decomposition
 
-**Spectral Asymptotics of Neural Network Loss Landscapes: An Exact Decomposition of the Curvature Exponent**
+**Spectral Asymptotics of Neural Network Loss Landscapes: Decomposing the Curvature Exponent**
 
 Anherutowa Calvo — [9D Labs](https://9dlabs.xyz)
 
@@ -102,7 +102,7 @@ All GPU experiments were run on **NVIDIA A10G** via [Modal](https://modal.com). 
 ```bibtex
 @article{calvo2026spectral,
   title={Spectral Asymptotics of Neural Network Loss Landscapes:
-         An Exact Decomposition of the Curvature Exponent},
+         Decomposing the Curvature Exponent},
   author={Calvo, Anherutowa},
   year={2026}
 }
